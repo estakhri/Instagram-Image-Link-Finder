@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class Test {
     public static void main(String[] args) throws IOException {
-        
+
         if (args.length == 1) {
             String line = args[0];
             File sourceFile = new File(line);
@@ -22,9 +22,7 @@ public class Test {
 
                 line = ImageLinkFinder.getUrl(line);
                 System.out.println(line);
-                StringSelection selection = new StringSelection(line);
-                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                clipboard.setContents(selection, selection);
+                Test.addToClipBoard(line);
             }
         } else {
 
@@ -33,10 +31,14 @@ public class Test {
                 String line = sc.nextLine();
                 line = ImageLinkFinder.getUrl(line);
                 System.out.println(line);
-                StringSelection selection = new StringSelection(line);
-                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                clipboard.setContents(selection, selection);
+                Test.addToClipBoard(line);
             }
         }
+    }
+
+    private static void addToClipBoard(String str) {
+        StringSelection selection = new StringSelection(str);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, selection);
     }
 }
