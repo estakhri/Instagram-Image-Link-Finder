@@ -11,13 +11,13 @@ import java.util.Scanner;
  * @author Nima
  */
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         if (args.length == 1) {
             String line = args[0];
             File sourceFile = new File(line);
             if (sourceFile.isFile()) {
-                System.out.println(ImageLinkFinder.findPhotoFromSource(line));
+                System.out.println(ImageLinkFinder.findPhotoFromSource(ImageLinkFinder.readFile(line)));
             } else {
 
                 line = ImageLinkFinder.getUrl(line);
